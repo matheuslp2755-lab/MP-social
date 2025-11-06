@@ -27,7 +27,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyBscsAkO_yJYfVVtCBh3rNF8Cm51_HLW54",
     authDomain: "teste-rede-fcb99.firebaseapp.com",
     projectId: "teste-rede-fcb99",
-    storageBucket: "teste-rede-fcb99.firebasestorage.app",
+    storageBucket: "teste-rede-fcb99.appspot.com",
     messagingSenderId: "1006477304115",
     appId: "1:1006477304115:web:e88d8e5f2e75d1b4df5e46"
 };

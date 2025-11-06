@@ -28,7 +28,7 @@ const Spinner: React.FC = () => (
 );
 
 const GridIcon: React.FC<{className?: string}> = ({ className }) => (
-    <svg aria-label="Posts" className={className} fill="currentColor" height="24" viewBox="0 0 24 24" width="24"><rect fill="none" height="18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" width="18" x="3" y="3"></rect><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="9.015" x2="9.015" y1="3" y2="21"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="14.985" x2="14.985" y1="3" y2="21"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="21" x2="3" y1="9.015" y2="9.015"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="21" x2="3" y1="14.985" y2="14.985"></line></svg>
+    <svg aria-label="Publicações" className={className} fill="currentColor" height="24" viewBox="0 0 24 24" width="24"><rect fill="none" height="18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" width="18" x="3" y="3"></rect><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="9.015" x2="9.015" y1="3" y2="21"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="14.985" x2="14.985" y1="3" y2="21"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="21" x2="3" y1="9.015" y2="9.015"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="21" x2="3" y1="14.985" y2="14.985"></line></svg>
 );
 
 
@@ -208,7 +208,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId, onStartMessage }) => 
     }
     
     if (!user) {
-        return <p className="text-center p-8 text-zinc-500 dark:text-zinc-400">User not found.</p>;
+        return <p className="text-center p-8 text-zinc-500 dark:text-zinc-400">Usuário não encontrado.</p>;
     }
 
     return (
@@ -222,23 +222,23 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId, onStartMessage }) => 
                     <div className="flex items-center gap-4">
                         <h2 className="text-2xl font-light">{user.username}</h2>
                         { currentUser?.uid === userId ? (
-                             <Button onClick={() => setIsEditModalOpen(true)} className="!w-auto !bg-zinc-200 dark:!bg-zinc-700 !text-black dark:!text-white hover:!bg-zinc-300 dark:hover:!bg-zinc-600">Edit Profile</Button>
+                             <Button onClick={() => setIsEditModalOpen(true)} className="!w-auto !bg-zinc-200 dark:!bg-zinc-700 !text-black dark:!text-white hover:!bg-zinc-300 dark:hover:!bg-zinc-600">Editar Perfil</Button>
                         ) : (
                             <div className="flex items-center gap-2">
                                 {isFollowing ? (
-                                    <Button onClick={handleUnfollow} className="!w-auto !bg-zinc-200 dark:!bg-zinc-700 !text-black dark:!text-white hover:!bg-zinc-300 dark:hover:!bg-zinc-600">Following</Button>
+                                    <Button onClick={handleUnfollow} className="!w-auto !bg-zinc-200 dark:!bg-zinc-700 !text-black dark:!text-white hover:!bg-zinc-300 dark:hover:!bg-zinc-600">Seguindo</Button>
                                 ) : (
-                                    <Button onClick={handleFollow} className="!w-auto">Follow</Button>
+                                    <Button onClick={handleFollow} className="!w-auto">Seguir</Button>
                                 )}
-                                <Button onClick={() => onStartMessage({ id: userId, username: user.username, avatar: user.avatar })} className="!w-auto !bg-zinc-200 dark:!bg-zinc-700 !text-black dark:!text-white hover:!bg-zinc-300 dark:hover:!bg-zinc-600">Message</Button>
+                                <Button onClick={() => onStartMessage({ id: userId, username: user.username, avatar: user.avatar })} className="!w-auto !bg-zinc-200 dark:!bg-zinc-700 !text-black dark:!text-white hover:!bg-zinc-300 dark:hover:!bg-zinc-600">Mensagem</Button>
                             </div>
                         )}
                        
                     </div>
                     <div className="flex items-center gap-8 text-sm">
-                        <span><span className="font-semibold">{stats.posts}</span> posts</span>
-                        <span><span className="font-semibold">{stats.followers}</span> followers</span>
-                        <span><span className="font-semibold">{stats.following}</span> following</span>
+                        <span><span className="font-semibold">{stats.posts}</span> publicações</span>
+                        <span><span className="font-semibold">{stats.followers}</span> seguidores</span>
+                        <span><span className="font-semibold">{stats.following}</span> seguindo</span>
                     </div>
                      {user.bio && (
                         <div className="text-sm pt-2 text-center sm:text-left">
@@ -250,7 +250,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId, onStartMessage }) => 
             <div className="border-t border-zinc-300 dark:border-zinc-700 pt-2">
                 <div className="flex justify-center gap-8 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
                     <button className="flex items-center gap-2 text-sky-500 border-t-2 border-sky-500 pt-2 -mt-0.5">
-                        <GridIcon className="w-4 h-4"/> POSTS
+                        <GridIcon className="w-4 h-4"/> PUBLICAÇÕES
                     </button>
                 </div>
                 {posts.length > 0 ? (
@@ -265,8 +265,8 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId, onStartMessage }) => 
                     </div>
                 ) : (
                      <div className="flex flex-col justify-center items-center p-16">
-                        <h3 className="text-2xl font-bold">No Posts Yet</h3>
-                        <p className="text-zinc-500 dark:text-zinc-400 mt-2">When this user shares photos, you'll see them here.</p>
+                        <h3 className="text-2xl font-bold">Nenhuma Publicação Ainda</h3>
+                        <p className="text-zinc-500 dark:text-zinc-400 mt-2">Quando este usuário compartilhar fotos, você as verá aqui.</p>
                     </div>
                 )}
             </div>

@@ -18,36 +18,36 @@ const formatTimestamp = (timestamp: { seconds: number; nanoseconds: number } | n
     const now = new Date();
     const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
-    if (diffInSeconds < 60) return `${diffInSeconds}s ago`;
+    if (diffInSeconds < 60) return `${diffInSeconds}s atrás`;
     const diffInMinutes = Math.floor(diffInSeconds / 60);
-    if (diffInMinutes < 60) return `${diffInMinutes}m ago`;
+    if (diffInMinutes < 60) return `${diffInMinutes}m atrás`;
     const diffInHours = Math.floor(diffInMinutes / 60);
-    if (diffInHours < 24) return `${diffInHours}h ago`;
+    if (diffInHours < 24) return `${diffInHours}h atrás`;
     const diffInDays = Math.floor(diffInHours / 24);
-    if (diffInDays < 7) return `${diffInDays}d ago`;
+    if (diffInDays < 7) return `${diffInDays}d atrás`;
     
     return date.toLocaleDateString();
 };
 
 
 const LikeIcon: React.FC<{className?: string, isLiked: boolean}> = ({ className, isLiked }) => (
-  <svg aria-label="Like" className={className} fill={isLiked ? '#ef4444' : 'currentColor'} height="24" role="img" viewBox="0 0 24 24" width="24"><title>Like</title><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-6.12 8.351C12.89 20.72 12.434 21 12 21s-.89-.28-1.38-.627C7.152 14.08 4.5 12.192 4.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.118-1.763a4.21 4.21 0 0 1 3.675-1.941Z"></path></svg>
+  <svg aria-label="Curtir" className={className} fill={isLiked ? '#ef4444' : 'currentColor'} height="24" role="img" viewBox="0 0 24 24" width="24"><title>Curtir</title><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-6.12 8.351C12.89 20.72 12.434 21 12 21s-.89-.28-1.38-.627C7.152 14.08 4.5 12.192 4.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.118-1.763a4.21 4.21 0 0 1 3.675-1.941Z"></path></svg>
 );
 
 const CommentIcon: React.FC<{className?: string}> = ({ className }) => (
-    <svg aria-label="Comment" className={className} fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Comment</title><path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="2"></path></svg>
+    <svg aria-label="Comentar" className={className} fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Comentar</title><path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="2"></path></svg>
 );
 
 const ShareIcon: React.FC<{className?: string}> = ({ className }) => (
-  <svg aria-label="Share Post" className={className} fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Share Post</title><line fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="2" x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" strokeLinejoin="round" strokeWidth="2"></polygon></svg>
+  <svg aria-label="Compartilhar Publicação" className={className} fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Compartilhar Publicação</title><line fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="2" x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" strokeLinejoin="round" strokeWidth="2"></polygon></svg>
 );
 
 const SaveIcon: React.FC<{className?: string}> = ({ className }) => (
-    <svg aria-label="Save" className={className} fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Save</title><polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></polygon></svg>
+    <svg aria-label="Salvar" className={className} fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Salvar</title><polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></polygon></svg>
 );
 
 const MoreIcon: React.FC<{className?: string}> = ({ className }) => (
-    <svg aria-label="More options" className={className} fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>More options</title><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
+    <svg aria-label="Mais opções" className={className} fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Mais opções</title><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
 );
 
 
@@ -120,7 +120,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <SaveIcon className="w-6 h-6 hover:text-zinc-500 dark:hover:text-zinc-400" />
             </button>
         </div>
-        <p className="font-semibold text-sm mb-1">{likesCount.toLocaleString()} likes</p>
+        <p className="font-semibold text-sm mb-1">{likesCount.toLocaleString()} curtidas</p>
         <p className="text-sm">
             <span className="font-semibold mr-2">{post.username}</span>
             {post.caption}
@@ -130,8 +130,8 @@ const Post: React.FC<PostProps> = ({ post }) => {
 
       <div className="border-t border-zinc-200 dark:border-zinc-800 px-4 py-2">
         <form className="flex items-center">
-            <input type="text" placeholder="Add a comment..." className="w-full bg-transparent border-none focus:outline-none text-sm placeholder:text-zinc-500 dark:placeholder:text-zinc-400" />
-            <button type="submit" className="text-sky-500 font-semibold text-sm opacity-50 cursor-not-allowed" disabled>Post</button>
+            <input type="text" placeholder="Adicione um comentário..." className="w-full bg-transparent border-none focus:outline-none text-sm placeholder:text-zinc-500 dark:placeholder:text-zinc-400" />
+            <button type="submit" className="text-sky-500 font-semibold text-sm opacity-50 cursor-not-allowed" disabled>Publicar</button>
         </form>
       </div>
     </article>

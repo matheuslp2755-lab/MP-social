@@ -85,5 +85,8 @@
   "footer.links.lite": "Instagram Lite",
   "footer.links.threads": "Threads",
   "footer.links.contact": "Carregamento de contatos e não usuários",
-  "footer.links.verified": "Meta Verified"
+  "footer.links.verified": "Meta Verified",
+  "findFriends.title": "Bem-vindo(a) ao MP SOCIAL!",
+  "findFriends.body": "Seu feed está vazio no momento. Comece a encontrar amigos para seguir e ver as publicações deles.",
+  "findFriends.button": "Encontrar Amigos"
 }

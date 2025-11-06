@@ -15,13 +15,13 @@ const AppLogo: React.FC = () => {
 
 const AppStoreButton: React.FC = () => (
     <a href="#" className="inline-block">
-        <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png" alt="Download on the App Store" className="h-10"/>
+        <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png" alt="Baixe na App Store" className="h-10"/>
     </a>
 );
 
 const GooglePlayButton: React.FC = () => (
     <a href="#" className="inline-block">
-        <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png" alt="Get it on Google Play" className="h-10"/>
+        <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png" alt="Disponível no Google Play" className="h-10"/>
     </a>
 );
 
@@ -46,7 +46,7 @@ const SignUp: React.FC<SignUpProps> = ({ onSwitchMode }) => {
     setError('');
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const avatarUrl = `https://i.pravatar.cc/150?u=${userCredential.user.uid}`;
+      const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(username)}&background=random&color=fff&size=150`;
       
       await updateProfile(userCredential.user, {
         displayName: username,
@@ -63,7 +63,7 @@ const SignUp: React.FC<SignUpProps> = ({ onSwitchMode }) => {
       });
       // Auth state change will be handled by App.tsx
     } catch (err: any) {
-      setError("Failed to create an account. The email may already be in use.");
+      setError("Falha ao criar uma conta. O e-mail já pode estar em uso.");
       console.error(err);
     } finally {
       setLoading(false);
@@ -75,43 +75,43 @@ const SignUp: React.FC<SignUpProps> = ({ onSwitchMode }) => {
       <div className="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-800 rounded-lg p-10 mb-2.5">
         <AppLogo />
         <h2 className="font-semibold text-zinc-500 dark:text-zinc-400 text-center text-base mb-4">
-          Sign up to see photos and videos from your friends.
+          Cadastre-se para ver fotos e vídeos dos seus amigos.
         </h2>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-2 mt-4">
-          <TextInput id="email" type="email" label="Mobile Number or Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <TextInput id="username" type="text" label="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-          <TextInput id="password" type="password" label="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <TextInput id="email" type="email" label="Número de celular ou e-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <TextInput id="username" type="text" label="Nome de usuário" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <TextInput id="password" type="password" label="Senha" value={password} onChange={(e) => setPassword(e.target.value)} />
           
           <p className="text-xs text-zinc-500 dark:text-zinc-400 text-center my-4">
-            People who use our service may have uploaded your contact information to Instagram.{' '}
-            <a href="#" className="text-blue-900 dark:text-blue-400 font-semibold">Learn More</a>
+            Pessoas que usam nosso serviço podem ter enviado suas informações de contato para o Instagram.{' '}
+            <a href="#" className="text-blue-900 dark:text-blue-400 font-semibold">Saiba Mais</a>
           </p>
           <p className="text-xs text-zinc-500 dark:text-zinc-400 text-center mb-4">
-            By signing up, you agree to our{' '}
-            <a href="#" className="text-blue-900 dark:text-blue-400 font-semibold">Terms</a>,{' '}
-            <a href="#" className="text-blue-900 dark:text-blue-400 font-semibold">Privacy Policy</a> and{' '}
-            <a href="#" className="text-blue-900 dark:text-blue-400 font-semibold">Cookies Policy</a>.
+            Ao se cadastrar, você concorda com nossos{' '}
+            <a href="#" className="text-blue-900 dark:text-blue-400 font-semibold">Termos</a>,{' '}
+            <a href="#" className="text-blue-900 dark:text-blue-400 font-semibold">Política de Privacidade</a> e{' '}
+            <a href="#" className="text-blue-900 dark:text-blue-400 font-semibold">Política de Cookies</a>.
           </p>
           
           {error && <p className="text-red-500 text-xs text-center mb-2">{error}</p>}
           <Button type="submit" disabled={!isFormValid || loading}>
-            {loading ? "Signing Up..." : "Sign up"}
+            {loading ? "Cadastrando..." : "Cadastre-se"}
           </Button>
         </form>
       </div>
 
       <div className="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-800 rounded-lg p-6 text-center text-sm">
         <p>
-          Have an account?{' '}
+          Tem uma conta?{' '}
           <button onClick={onSwitchMode} className="font-semibold text-sky-500 hover:text-sky-600 bg-transparent border-none p-0 cursor-pointer">
-            Log in
+            Entrar
           </button>
         </p>
       </div>
 
       <div className="text-center mt-4 text-sm">
-        <p className="mb-4">Get the app.</p>
+        <p className="mb-4">Obtenha o aplicativo.</p>
         <div className="flex justify-center gap-4">
           <AppStoreButton />
           <GooglePlayButton />

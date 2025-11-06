@@ -103,8 +103,8 @@ const MessagesModal: React.FC<MessagesModalProps> = ({ isOpen, onClose, initialT
                     <>
                         <header className="flex items-center justify-between p-4 border-b border-zinc-200 dark:border-zinc-800 flex-shrink-0">
                             <div className="w-8"></div> {/* Spacer */}
-                            <h2 className="text-lg font-semibold text-center">Messages</h2>
-                            <button onClick={onClose} className="text-2xl font-light leading-none w-8 text-right" aria-label="Close messages">&times;</button>
+                            <h2 className="text-lg font-semibold text-center">Mensagens</h2>
+                            <button onClick={onClose} className="text-2xl font-light leading-none w-8 text-right" aria-label="Fechar mensagens">&times;</button>
                         </header>
                         <main className="flex-grow overflow-hidden">
                             <ConversationList onSelectConversation={handleSelectConversation} />

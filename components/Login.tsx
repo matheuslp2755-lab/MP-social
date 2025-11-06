@@ -14,13 +14,13 @@ const AppLogo: React.FC = () => {
 
 const AppStoreButton: React.FC = () => (
     <a href="#" className="inline-block">
-        <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png" alt="Download on the App Store" className="h-10"/>
+        <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png" alt="Baixe na App Store" className="h-10"/>
     </a>
 );
 
 const GooglePlayButton: React.FC = () => (
     <a href="#" className="inline-block">
-        <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png" alt="Get it on Google Play" className="h-10"/>
+        <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png" alt="Disponível no Google Play" className="h-10"/>
     </a>
 );
 
@@ -46,7 +46,7 @@ const Login: React.FC<LoginProps> = ({ onSwitchMode }) => {
       await signInWithEmailAndPassword(auth, email, password);
       // Auth state change will be handled by App.tsx
     } catch (err: any) {
-      setError("Failed to log in. Please check your email and password.");
+      setError("Falha ao entrar. Verifique seu e-mail e senha.");
       console.error(err);
     } finally {
       setLoading(false);
@@ -70,44 +70,44 @@ const Login: React.FC<LoginProps> = ({ onSwitchMode }) => {
             <TextInput
               id="email"
               type="email"
-              label="Email address"
+              label="Endereço de e-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <TextInput
               id="password"
               type="password"
-              label="Password"
+              label="Senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             {error && <p className="text-red-500 text-xs text-center mt-2">{error}</p>}
             <Button type="submit" disabled={!isFormValid || loading} className="mt-4">
-              {loading ? "Logging In..." : "Log In"}
+              {loading ? "Entrando..." : "Entrar"}
             </Button>
           </form>
 
           <div className="mt-6 text-center">
             <a href="#" className="block text-center text-xs text-blue-900 dark:text-blue-400">
-              Forgot password?
+              Esqueceu a senha?
             </a>
           </div>
         </div>
         
         <div className="bg-white dark:bg-black border border-zinc-300 dark:border-zinc-800 rounded-lg p-6 text-center text-sm">
           <p>
-            Don't have an account?{' '}
+            Não tem uma conta?{' '}
             <button
               onClick={onSwitchMode}
               className="font-semibold text-sky-500 hover:text-sky-600 bg-transparent border-none p-0 cursor-pointer"
             >
-              Sign up
+              Cadastre-se
             </button>
           </p>
         </div>
 
         <div className="text-center mt-4 text-sm">
-            <p className="mb-4">Get the app.</p>
+            <p className="mb-4">Obtenha o aplicativo.</p>
             <div className="flex justify-center gap-4">
                 <AppStoreButton />
                 <GooglePlayButton />

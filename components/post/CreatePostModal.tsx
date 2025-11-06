@@ -12,7 +12,7 @@ interface CreatePostModalProps {
 }
 
 const ImageUploadIcon: React.FC = () => (
-    <svg aria-label="Icon to represent media such as images or videos" className="w-24 h-24 text-zinc-800 dark:text-zinc-200" fill="currentColor" role="img" viewBox="0 0 97.6 77.3"><path d="M16.3 24h.3c2.8-.2 4.9-2.6 4.8-5.4A4.9 4.9 0 0 0 16 13.6c-2.8.2-4.9 2.6-4.8 5.4.1 2.7 2.4 4.8 5.1 5zM42.4 28.9c-2.8.2-5.4-2-5.6-4.8-.2-2.8 2-5.4 4.8-5.6 2.8-.2 5.4 2 5.6 4.8.2 2.8-2 5.4-4.8 5.6z" fill="currentColor"></path><path d="M84.7 18.4 58 16.9l-.2-3.2c-.3-5.7-5.2-10.1-11-9.8L12.9 6c-5.7.3-10.1 5.2-9.8 11L5 51.1v.8c.3 5.7 5.2 10.1 11 9.8l24.7-1.9v-9.4l-14.4 1.1c-1.2.1-2.2-1-2.1-2.2l-.2-3.2 14.5-1.2c5.7-.3 10.1-5.2 9.8-11L51 15.1l18.7 1.4c1.2.1 2.2 1 2.1 2.2l.2 3.2-18.7-1.4c-5.7.3-10.1 5.2-9.8 11l-1.9 24.7c.1 1.2 1 2.2 2.2 2.1l14.4-1.1v9.4l-24.7 1.9c-5.7-.3-10.1-5.2-9.8-11L18.4 25.6v-.8c-.3-5.7 5.2-10.1 11-9.8l24.7 1.9v9.4l14.4-1.1c1.2-.1 2.2 1 2.1 2.2l.2 3.2-14.5 1.2c-5.7.3-10.1 5.2-9.8 11L49 60.3l-18.7-1.4c-1.2-.1-2.2-1-2.1-2.2l-.2-3.2 18.7 1.4c5.7-.3 10.1-5.2 9.8-11l1.9-24.7c-.1-1.2-1-2.2-2.2-2.1L31.2 20.1v-9.4l24.7-1.9c5.7.3 10.1 5.2 9.8 11l-2.1 28.9.2.6c.3 5.7-5.2 10.1-11 9.8L31.2 68.1v.8c.3 5.7 5.2 10.1 11 9.8l24.7-1.9v-9.4l-14.4 1.1c-1.2.1-2.2-1-2.1-2.2l-.2-3.2 14.5-1.2c5.7-.3 10.1-5.2 9.8-11L72.2 19l14.5-1.2c1.2-.1 2.2 1 2.1 2.2l-.2 3.2-14.5 1.2c-5.7.3-10.1 5.2-9.8 11l-1.9 24.7c.1 1.2 1 2.2 2.2 2.1l14.4-1.1v9.4l-24.7 1.9c-5.7-.3-10.1-5.2-9.8-11l2.1-28.9-.2-.6c-.3-5.7 5.2-10.1 11-9.8l21.5 1.7 2.1-28.9c-.3-5.7-5.2-10.1-11-9.8L21.5 4.9v.8c-.3 5.7 5.2 10.1 11 9.8l24.7-1.9v-9.4L31.2 6C25.5 5.7 21.1.8 21.4-5l2.1-28.9c.3-5.7 5.2-10.1 11-9.8l42.2-3.2c5.7-.3 10.1 5.2 9.8 11z" fill="currentColor"></path></svg>
+    <svg aria-label="Ícone para representar mídias como imagens ou vídeos" className="w-24 h-24 text-zinc-800 dark:text-zinc-200" fill="currentColor" role="img" viewBox="0 0 97.6 77.3"><path d="M16.3 24h.3c2.8-.2 4.9-2.6 4.8-5.4A4.9 4.9 0 0 0 16 13.6c-2.8.2-4.9 2.6-4.8 5.4.1 2.7 2.4 4.8 5.1 5zM42.4 28.9c-2.8.2-5.4-2-5.6-4.8-.2-2.8 2-5.4 4.8-5.6 2.8-.2 5.4 2 5.6 4.8.2 2.8-2 5.4-4.8 5.6z" fill="currentColor"></path><path d="M84.7 18.4 58 16.9l-.2-3.2c-.3-5.7-5.2-10.1-11-9.8L12.9 6c-5.7.3-10.1 5.2-9.8 11L5 51.1v.8c.3 5.7 5.2 10.1 11 9.8l24.7-1.9v-9.4l-14.4 1.1c-1.2.1-2.2-1-2.1-2.2l-.2-3.2 14.5-1.2c5.7-.3 10.1-5.2 9.8-11L51 15.1l18.7 1.4c1.2.1 2.2 1 2.1 2.2l.2 3.2-18.7-1.4c-5.7.3-10.1 5.2-9.8 11l-1.9 24.7c.1 1.2 1 2.2 2.2 2.1l14.4-1.1v9.4l-24.7 1.9c-5.7-.3-10.1-5.2-9.8-11L18.4 25.6v-.8c-.3-5.7 5.2-10.1 11-9.8l24.7 1.9v9.4l14.4-1.1c1.2-.1 2.2 1 2.1 2.2l.2 3.2-14.5 1.2c-5.7.3-10.1 5.2-9.8 11L49 60.3l-18.7-1.4c-1.2-.1-2.2-1-2.1-2.2l-.2-3.2 18.7 1.4c5.7-.3 10.1-5.2 9.8-11l1.9-24.7c-.1-1.2-1-2.2-2.2-2.1L31.2 20.1v-9.4l24.7-1.9c5.7.3 10.1 5.2 9.8 11l-2.1 28.9.2.6c.3 5.7-5.2 10.1-11 9.8L31.2 68.1v.8c.3 5.7 5.2 10.1 11 9.8l24.7-1.9v-9.4l-14.4 1.1c-1.2.1-2.2-1-2.1-2.2l-.2-3.2 14.5-1.2c5.7-.3 10.1-5.2 9.8-11L72.2 19l14.5-1.2c1.2-.1 2.2 1 2.1 2.2l-.2 3.2-14.5 1.2c-5.7.3-10.1 5.2-9.8 11l-1.9 24.7c.1 1.2 1 2.2 2.2 2.1l14.4-1.1v9.4l-24.7 1.9c-5.7-.3-10.1-5.2-9.8-11l2.1-28.9-.2-.6c-.3-5.7 5.2-10.1 11-9.8l21.5 1.7 2.1-28.9c-.3-5.7-5.2-10.1-11-9.8L21.5 4.9v.8c-.3 5.7 5.2 10.1 11 9.8l24.7-1.9v-9.4L31.2 6C25.5 5.7 21.1.8 21.4-5l2.1-28.9c.3-5.7 5.2-10.1 11-9.8l42.2-3.2c5.7-.3 10.1 5.2 9.8 11z" fill="currentColor"></path></svg>
 );
 
 
@@ -86,10 +86,10 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ isOpen, onClose, onPo
                 onClick={e => e.stopPropagation()}
             >
                 <div className="p-4 border-b border-zinc-200 dark:border-zinc-800 flex justify-between items-center">
-                    <h2 className="text-lg font-semibold">Create new post</h2>
+                    <h2 className="text-lg font-semibold">Criar nova publicação</h2>
                     {imagePreview && (
                          <Button onClick={handleSubmit} disabled={loading} className="!w-auto !py-0 !px-3 !text-sm">
-                            {loading ? "Sharing..." : "Share"}
+                            {loading ? "Compartilhando..." : "Compartilhar"}
                         </Button>
                     )}
                 </div>
@@ -97,16 +97,16 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ isOpen, onClose, onPo
                     {imagePreview ? (
                         <div className="flex flex-col md:flex-row">
                             <div className="w-full md:w-1/2 aspect-square">
-                                <img src={imagePreview} alt="Post preview" className="w-full h-full object-cover" />
+                                <img src={imagePreview} alt="Pré-visualização da publicação" className="w-full h-full object-cover" />
                             </div>
                             <div className="w-full md:w-1/2 p-4">
                                 <div className="flex items-center mb-4">
-                                    <img src={auth.currentUser?.photoURL || ''} alt={auth.currentUser?.displayName || 'User'} className="w-8 h-8 rounded-full object-cover"/>
+                                    <img src={auth.currentUser?.photoURL || ''} alt={auth.currentUser?.displayName || 'Usuário'} className="w-8 h-8 rounded-full object-cover"/>
                                     <p className="font-semibold text-sm ml-3">{auth.currentUser?.displayName}</p>
                                 </div>
                                 <TextAreaInput 
                                     id="caption"
-                                    label="Write a caption..."
+                                    label="Escreva uma legenda..."
                                     value={caption}
                                     onChange={(e) => setCaption(e.target.value)}
                                     className="!min-h-[150px]"
@@ -116,10 +116,10 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ isOpen, onClose, onPo
                     ) : (
                         <div className="flex flex-col items-center justify-center p-16">
                             <ImageUploadIcon />
-                            <h3 className="text-xl mt-4 mb-2">Drag photos here</h3>
+                            <h3 className="text-xl mt-4 mb-2">Arraste as fotos aqui</h3>
                             <input type="file" ref={fileInputRef} onChange={handleImageChange} className="hidden" accept="image/png, image/jpeg" />
                             <Button onClick={triggerFileInput}>
-                                Select from computer
+                                Selecionar do computador
                             </Button>
                         </div>
                     )}

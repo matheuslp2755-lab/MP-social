@@ -50,10 +50,11 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ conversationId, onBack }) => {
             if (data) {
                 const otherUserId = data.participants.find((p: string) => p !== currentUser.uid);
                 const otherUserInfo = data.participantInfo[otherUserId];
+                const defaultAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(otherUserInfo?.username || '?')}&background=random&color=fff&size=150`;
                 setOtherUser({
                     id: otherUserId,
-                    username: otherUserInfo?.username || 'User',
-                    avatar: otherUserInfo?.avatar || `https://i.pravatar.cc/150?u=${otherUserId}`,
+                    username: otherUserInfo?.username || 'Usuário',
+                    avatar: otherUserInfo?.avatar || defaultAvatar,
                 });
             }
         });
@@ -107,15 +108,15 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ conversationId, onBack }) => {
     };
 
     if (loading) {
-        return <div className="h-full flex items-center justify-center">Loading messages...</div>;
+        return <div className="h-full flex items-center justify-center">Carregando mensagens...</div>;
     }
     
     if (!conversationId) {
          return (
             <div className="h-full flex flex-col items-center justify-center text-center p-8">
                 <svg aria-label="Direct" className="w-24 h-24 text-zinc-800 dark:text-zinc-200" fill="currentColor" height="96" role="img" viewBox="0 0 96 96" width="96"><path d="M48 0C21.534 0 0 21.534 0 48s21.534 48 48 48 48-21.534 48-48S74.466 0 48 0Zm0 91.5C24.087 91.5 4.5 71.913 4.5 48S24.087 4.5 48 4.5 91.5 24.087 91.5 48 71.913 91.5 48 91.5Zm16.5-54.498L33.91 56.41l-10.46-10.46a4.5 4.5 0 0 0-6.364 6.364l13.642 13.64a4.5 4.5 0 0 0 6.364 0L70.864 43.37a4.5 4.5 0 0 0-6.364-6.368Z"></path></svg>
-                <h2 className="text-2xl mt-4">Your Messages</h2>
-                <p className="text-zinc-500 dark:text-zinc-400 mt-2">Send private photos and messages to a friend.</p>
+                <h2 className="text-2xl mt-4">Suas Mensagens</h2>
+                <p className="text-zinc-500 dark:text-zinc-400 mt-2">Envie fotos e mensagens privadas para um amigo.</p>
             </div>
         );
     }
@@ -125,7 +126,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ conversationId, onBack }) => {
         <div className="flex flex-col h-full">
             {otherUser && (
                 <header className="flex items-center gap-4 p-4 border-b border-zinc-200 dark:border-zinc-800 flex-shrink-0">
-                    <button onClick={onBack} aria-label="Back to conversations">
+                    <button onClick={onBack} aria-label="Voltar para as conversas">
                        <BackArrowIcon className="w-6 h-6" />
                     </button>
                     <img src={otherUser.avatar} alt={otherUser.username} className="w-10 h-10 rounded-full object-cover" />
@@ -154,11 +155,11 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ conversationId, onBack }) => {
                         type="text"
                         value={newMessage}
                         onChange={(e) => setNewMessage(e.target.value)}
-                        placeholder="Message..."
+                        placeholder="Mensagem..."
                         className="w-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-full py-2 px-4 text-sm focus:outline-none focus:border-sky-500"
                     />
                     <button type="submit" disabled={!newMessage.trim()} className="text-sky-500 font-semibold text-sm disabled:opacity-50 disabled:cursor-not-allowed px-2">
-                        Send
+                        Enviar
                     </button>
                 </form>
             </div>

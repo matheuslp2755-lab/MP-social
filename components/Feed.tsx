@@ -4,6 +4,7 @@ import UserProfile from './profile/UserProfile';
 import CreatePostModal from './post/CreatePostModal';
 import Post from './feed/Post';
 import MessagesModal from './messages/MessagesModal';
+import Button from './common/Button';
 import { auth, db, collection, query, where, getDocs, orderBy as firebaseOrderBy, limit } from '../firebase';
 
 const Spinner: React.FC = () => (
@@ -29,16 +30,51 @@ const EmptyFeed: React.FC = () => {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24 text-zinc-300 dark:text-zinc-700 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
           </svg>
-          <h2 className="text-2xl font-bold mb-2">Welcome to MP SOCIAL</h2>
+          <h2 className="text-2xl font-bold mb-2">Bem-vindo ao MP SOCIAL</h2>
           <p className="text-zinc-500 dark:text-zinc-400">
-            It looks like your feed is empty.
+            Parece que seu feed está vazio.
           </p>
           <p className="text-zinc-500 dark:text-zinc-400 mt-1">
-            Use the search bar to find and follow your friends to see their photos and videos.
+            Use a barra de pesquisa para encontrar e seguir seus amigos para ver suas fotos e vídeos.
           </p>
         </div>
       </div>
     );
+};
+
+interface FindFriendsModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const FindFriendsModal: React.FC<FindFriendsModalProps> = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50"
+      onClick={onClose}
+      aria-modal="true"
+      role="dialog"
+    >
+      <div
+        className="bg-white dark:bg-black rounded-lg shadow-xl w-full max-w-sm m-4 text-center p-8 flex flex-col items-center gap-4"
+        onClick={e => e.stopPropagation()}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21v-1a6 6 0 00-1.78-4.125M15 15v5.5M5 14l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3" />
+        </svg>
+
+        <h2 className="text-2xl font-bold">Bem-vindo(a) ao MP SOCIAL!</h2>
+        <p className="text-zinc-500 dark:text-zinc-400">
+          Seu feed está vazio no momento. Comece a encontrar amigos para seguir e ver as publicações deles.
+        </p>
+        <Button onClick={onClose} className="mt-4">
+          Encontrar Amigos
+        </Button>
+      </div>
+    </div>
+  );
 };
 
 
@@ -51,6 +87,7 @@ const Feed: React.FC = () => {
   const [feedKey, setFeedKey] = useState(0);
   const [isMessagesModalOpen, setIsMessagesModalOpen] = useState(false);
   const [initialMessageTarget, setInitialMessageTarget] = useState<{ id: string, username: string, avatar: string } | null>(null);
+  const [showFindFriendsModal, setShowFindFriendsModal] = useState(false);
 
   useEffect(() => {
     if (viewingProfileId || !auth.currentUser) return;
@@ -74,8 +111,20 @@ const Feed: React.FC = () => {
                 const postsSnap = await getDocs(postsQuery);
                 const posts = postsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as PostType));
                 setFeedPosts(posts);
+                 if (posts.length === 0) {
+                    const hasSeenPrompt = sessionStorage.getItem('hasSeenFindFriendsPrompt');
+                    if (!hasSeenPrompt) {
+                        setShowFindFriendsModal(true);
+                        sessionStorage.setItem('hasSeenFindFriendsPrompt', 'true');
+                    }
+                }
             } else {
                 setFeedPosts([]);
+                 const hasSeenPrompt = sessionStorage.getItem('hasSeenFindFriendsPrompt');
+                if (!hasSeenPrompt) {
+                    setShowFindFriendsModal(true);
+                    sessionStorage.setItem('hasSeenFindFriendsPrompt', 'true');
+                }
             }
 
         } catch (error) {
@@ -152,6 +201,10 @@ const Feed: React.FC = () => {
             setInitialMessageTarget(null);
         }}
         initialTargetUser={initialMessageTarget}
+      />
+      <FindFriendsModal
+        isOpen={showFindFriendsModal}
+        onClose={() => setShowFindFriendsModal(false)}
       />
     </>
   );

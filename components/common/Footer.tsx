@@ -4,17 +4,17 @@ const Footer: React.FC = () => {
     
     const footerLinks = [
         { key: 'meta', name: 'Meta' },
-        { key: 'about', name: 'About' },
+        { key: 'about', name: 'Sobre' },
         { key: 'blog', name: 'Blog' },
-        { key: 'jobs', name: 'Jobs' },
-        { key: 'help', name: 'Help' },
+        { key: 'jobs', name: 'Carreiras' },
+        { key: 'help', name: 'Ajuda' },
         { key: 'api', name: 'API' },
-        { key: 'privacy', name: 'Privacy' },
-        { key: 'terms', name: 'Terms' },
-        { key: 'locations', name: 'Locations' },
+        { key: 'privacy', name: 'Privacidade' },
+        { key: 'terms', name: 'Termos' },
+        { key: 'locations', name: 'Localizações' },
         { key: 'lite', name: 'Instagram Lite' },
         { key: 'threads', name: 'Threads' },
-        { key: 'contact', name: 'Contact Uploading & Non-Users' },
+        { key: 'contact', name: 'Carregamento de contatos e não usuários' },
         { key: 'verified', name: 'Meta Verified' },
     ];
 
@@ -28,8 +28,8 @@ const Footer: React.FC = () => {
         ))}
       </div>
       <div className="flex justify-center items-center gap-4">
-        <span>English</span>
-        <span>{`© ${new Date().getFullYear()} MP SOCIAL from Meta`}</span>
+        <span>Português</span>
+        <span>{`© ${new Date().getFullYear()} MP SOCIAL da Meta`}</span>
       </div>
     </footer>
   );

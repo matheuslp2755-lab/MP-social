@@ -38,7 +38,7 @@ const MessagesIcon: React.FC<{className?: string}> = ({className = "h-6 w-6"}) =
 
 
 const HeartIcon: React.FC<{className?: string}> = ({className = "h-6 w-6"}) => (
-    <svg aria-label="Notifications" className={className} fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Notifications</title><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-6.12 8.351C12.89 20.72 12.434 21 12 21s-.89-.28-1.38-.627C7.152 14.08 4.5 12.192 4.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.118-1.763a4.21 4.21 0 0 1 3.675-1.941Z"></path></svg>
+    <svg aria-label="Notificações" className={className} fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Notificações</title><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-6.12 8.351C12.89 20.72 12.434 21 12 21s-.89-.28-1.38-.627C7.152 14.08 4.5 12.192 4.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.118-1.763a4.21 4.21 0 0 1 3.675-1.941Z"></path></svg>
 );
 
 const ProfileIcon: React.FC<{className?: string}> = ({className = "h-5 w-5 mr-3"}) => (
@@ -257,7 +257,7 @@ const Header: React.FC<HeaderProps> = ({ onSelectUser, onGoHome, onOpenCreatePos
     const searchResultContent = (
         <>
            {isSearching && <SpinnerIcon />}
-           {!isSearching && searchQuery && searchResults.length === 0 && <p className="text-center text-sm text-zinc-500 dark:text-zinc-400 p-4">No results found.</p>}
+           {!isSearching && searchQuery && searchResults.length === 0 && <p className="text-center text-sm text-zinc-500 dark:text-zinc-400 p-4">Nenhum resultado encontrado.</p>}
            {!isSearching && searchResults.map(user => (
                <button key={user.id} onClick={() => handleUserClick(user)} className="w-full text-left flex items-center p-2 hover:bg-zinc-50 dark:hover:bg-zinc-900 cursor-pointer">
                    <img src={user.avatar} alt={user.username} className="w-11 h-11 rounded-full object-cover" />
@@ -265,9 +265,9 @@ const Header: React.FC<HeaderProps> = ({ onSelectUser, onGoHome, onOpenCreatePos
                        <p className="font-semibold text-sm">{user.username}</p>
                    </div>
                    {following.includes(user.id) ? (
-                       <button onClick={(e) => { e.stopPropagation(); handleUnfollow(user.id); }} className="ml-auto text-sm font-semibold text-zinc-800 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 px-4 py-1 rounded-lg transition-colors">Following</button>
+                       <button onClick={(e) => { e.stopPropagation(); handleUnfollow(user.id); }} className="ml-auto text-sm font-semibold text-zinc-800 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 px-4 py-1 rounded-lg transition-colors">Seguindo</button>
                    ) : (
-                       <button onClick={(e) => { e.stopPropagation(); handleFollow(user); }} className="ml-auto text-sm font-semibold text-white bg-sky-500 hover:bg-sky-600 px-4 py-1 rounded-lg transition-colors">Follow</button>
+                       <button onClick={(e) => { e.stopPropagation(); handleFollow(user); }} className="ml-auto text-sm font-semibold text-white bg-sky-500 hover:bg-sky-600 px-4 py-1 rounded-lg transition-colors">Seguir</button>
                    )}
                </button>
            ))}
@@ -292,7 +292,7 @@ const Header: React.FC<HeaderProps> = ({ onSelectUser, onGoHome, onOpenCreatePos
                         </span>
                         <input
                             type="text"
-                            placeholder="Search"
+                            placeholder="Pesquisar"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             onFocus={() => setIsSearchFocused(true)}
@@ -330,12 +330,12 @@ const Header: React.FC<HeaderProps> = ({ onSelectUser, onGoHome, onOpenCreatePos
                                         <div key={notification.id} className="flex items-center p-3 hover:bg-zinc-50 dark:hover:bg-zinc-900">
                                             <img src={notification.fromUserAvatar} alt={notification.fromUsername} className="w-11 h-11 rounded-full object-cover"/>
                                             <p className="ml-3 text-sm flex-grow">
-                                                <span className="font-semibold">{notification.fromUsername}</span> started following you.
+                                                <span className="font-semibold">{notification.fromUsername}</span> começou a seguir você.
                                             </p>
                                         </div>
                                     ))
                                 ) : (
-                                    <p className="text-center text-sm text-zinc-500 dark:text-zinc-400 p-4">No new activity.</p>
+                                    <p className="text-center text-sm text-zinc-500 dark:text-zinc-400 p-4">Nenhuma atividade nova.</p>
                                 )}
                             </div>
                         )}
@@ -343,19 +343,22 @@ const Header: React.FC<HeaderProps> = ({ onSelectUser, onGoHome, onOpenCreatePos
 
                     <div ref={profileRef} className="relative">
                         <button onClick={() => setIsProfileDropdownOpen(prev => !prev)} className="w-8 h-8 rounded-full focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-white dark:focus:ring-offset-black">
-                             <img src={currentUser?.photoURL || `https://i.pravatar.cc/150?u=${currentUser?.uid}`} alt="Profile" className="w-full h-full rounded-full object-cover" />
+                             {(() => {
+                                const defaultAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(currentUser?.displayName || '?')}&background=random&color=fff&size=150`;
+                                return <img src={currentUser?.photoURL || defaultAvatar} alt="Perfil" className="w-full h-full rounded-full object-cover" />;
+                            })()}
                         </button>
                         {isProfileDropdownOpen && (
                             <div className="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-zinc-950 rounded-md shadow-lg border border-zinc-200 dark:border-zinc-800 z-20 py-1">
                                 <button onClick={handleProfileLink} className="w-full flex items-center text-left px-4 py-2 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-900">
-                                    <ProfileIcon /> Profile
+                                    <ProfileIcon /> Perfil
                                 </button>
                                  <button onClick={() => { onOpenCreatePostModal(); setIsProfileDropdownOpen(false); }} className="w-full flex items-center text-left px-4 py-2 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-900">
-                                    <PlusCircleIcon /> Create Post
+                                    <PlusCircleIcon /> Criar Publicação
                                 </button>
                                 <div className="border-t border-zinc-200 dark:border-zinc-800 my-1"></div>
                                 <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-900">
-                                    Log Out
+                                    Sair
                                 </button>
                             </div>
                         )}
@@ -371,7 +374,7 @@ const Header: React.FC<HeaderProps> = ({ onSelectUser, onGoHome, onOpenCreatePos
                         }} 
                         className="text-sm font-semibold"
                     >
-                        Cancel
+                        Cancelar
                     </button>
                 </div>
             </div>

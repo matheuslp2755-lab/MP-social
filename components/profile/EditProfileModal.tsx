@@ -63,13 +63,13 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onClose, us
         onClick={e => e.stopPropagation()}
       >
         <div className="p-4 border-b border-zinc-200 dark:border-zinc-800 flex justify-between items-center">
-          <h2 className="text-lg font-semibold">Edit Profile</h2>
+          <h2 className="text-lg font-semibold">Editar Perfil</h2>
           <button onClick={onClose} className="text-2xl font-light">&times;</button>
         </div>
         <form onSubmit={handleSubmit}>
             <div className="p-6 flex flex-col items-center gap-4">
                 <div className="flex items-center gap-6 w-full">
-                    <img src={avatarPreview || user.avatar} alt="Profile" className="w-16 h-16 rounded-full object-cover" />
+                    <img src={avatarPreview || user.avatar} alt="Perfil" className="w-16 h-16 rounded-full object-cover" />
                     <div className="flex flex-col">
                         <span className="font-semibold">{user.username}</span>
                         <button 
@@ -77,7 +77,7 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onClose, us
                             onClick={triggerFileInput}
                             className="text-sm font-semibold text-sky-500 hover:text-sky-600 bg-transparent border-none p-0 cursor-pointer text-left"
                         >
-                            Change profile photo
+                            Alterar foto do perfil
                         </button>
                          <input
                             type="file"
@@ -91,13 +91,13 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onClose, us
                 <div className="w-full flex flex-col gap-4 mt-4">
                     <TextInput
                         id="username"
-                        label="Username"
+                        label="Nome de usuário"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                     />
                     <TextAreaInput
                         id="bio"
-                        label="Bio"
+                        label="Biografia"
                         value={bio}
                         onChange={(e) => setBio(e.target.value)}
                     />
@@ -105,7 +105,7 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onClose, us
             </div>
             <div className="p-4 border-t border-zinc-200 dark:border-zinc-800 flex justify-end">
                 <Button type="submit" disabled={loading}>
-                    {loading ? "Submitting..." : "Submit"}
+                    {loading ? "Enviando..." : "Enviar"}
                 </Button>
             </div>
         </form>
